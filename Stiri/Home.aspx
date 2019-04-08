@@ -1,4 +1,4 @@
- <%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="Home.aspx.cs" Inherits="Home" %>
+<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="Home.aspx.cs" Inherits="Home" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
@@ -11,7 +11,16 @@
     <!--<asp:DropDownList ID="DDLBrand" runat="server" DataSourceID="SqlDataSource1" DataTextField="Nume" ></asp:DropDownList>
     <asp:TextBox ID="TextBox1" runat="server" DataSourceID="SqlDataSource1" DataTextField="Nume"> </asp:TextBox>
     <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename='D:\Master\Sem. 2\ElemProgrAvansata\Proiect\Prezentare\Stiri\App_Data\Database.mdf';Integrated Security=True" SelectCommand="SELECT [Nume], [Prenume] FROM [User]"></asp:SqlDataSource>
--->   
+-->  
+    <div class="filtru">
+        <asp:Label  class="Label" ID="Label_Din_Data" runat="server" Text="Cauta stiri din data: "></asp:Label>
+        <asp:TextBox class="Text" type="date" ID="Text_Data"  runat="server"></asp:TextBox>   
+        <asp:Button class="but" style="margin-right:26%;" ID="Buton_Din_Data" runat="server" Text="CAUTA" OnClick ="Cauta_Dupa_Data"/>     
+        <asp:Label class="Label" ID="Label_Dupa_Autor" runat="server" Text="Cauta stiri dupa autor: "></asp:Label>
+        <asp:TextBox placeholder="@username"  style="padding:7px;" class="Text" ID="Text_Dupa_Autor" runat="server"></asp:TextBox>   
+        <asp:Button class="but"  ID="Buton_Dupa_Autor" runat="server" Text="CAUTA" OnClick ="Cauta_Dupa_Autor"/>       
+    </div>
+      
     <div>
     <asp:SqlDataSource ID="Articole" 
             runat="server"
@@ -39,3 +48,5 @@
     </asp:Repeater>
         </div>
 </asp:Content>
+
+
