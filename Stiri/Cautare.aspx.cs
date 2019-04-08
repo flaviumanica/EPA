@@ -24,6 +24,11 @@ public partial class Cautare : System.Web.UI.Page
                 + " FROM [Articol],[User] ,[Imagine],[Categorii] "
                 + " WHERE [Articol].[Id]=[Imagine].[Id_Articol] AND [Articol].[Id_User] = [User].[Id] AND [Articol].[Categorie] = [Categorii].[Id]"
                 + " AND ([Articol].[Titlu] like @q OR [Articol].[Descriere] like @q OR [Categorii].[Nume] like @q) order by [Articol].[Titlu]";
+
+			 Articole.SelectParameters.Clear();
+            Articole.SelectParameters.Add("q", "%" + query + "%");
+            Articole.DataBind();
+
        
 
         }
