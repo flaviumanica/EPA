@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="Utilizatori.aspx.cs" Inherits="Utilizatori" %>
+<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="Utilizatori.aspx.cs" Inherits="Utilizatori" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="server">
 </asp:Content>
@@ -71,11 +71,16 @@
                   <asp:Label runat="server" ID="Label4" 
                       text='<%# Eval("Tip") %>' />
               </td>
-              
+              <td class="unu">
+                  <asp:HyperLink class="hip" runat="server" NavigateUrl='<%# "~/Modifica_tip.aspx?id=" + DataBinder.Eval(Container.DataItem, "Id")%>'>
+               <%--<input class="but" type="button" value="MODIFICA DREPTURI" />--%>
+                MODIFICA DREPTURI </asp:HyperLink>
+              </td>
           </tr>
           </ItemTemplate>
         </asp:Repeater>
         <asp:Literal ID="Mesaj" runat="server"></asp:Literal>
     
 </asp:Content>
+
 
