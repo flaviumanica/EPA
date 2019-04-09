@@ -12,13 +12,6 @@ public partial class Vizualizare_Stire : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
 
-        if(Session["user"] != null && Session["id"] != null) 
-        {
-            Label1.Visible = true;
-            Adauga_comm.Visible = true;
-            Comm.Visible = true;
-        }
-
         if (Page.IsPostBack == false && Request.Params["id"] != null)
         {
             //Mesaj.Text = Request.Params["id"];
@@ -64,5 +57,6 @@ public partial class Vizualizare_Stire : System.Web.UI.Page
         }
 
     }
- 
+
+   
 }
