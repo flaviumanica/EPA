@@ -10,6 +10,18 @@ public partial class Modifica_tip : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+	if (Session["user"] == null)
+        {
+            Response.Redirect("~/Acces.aspx");
+        }
+        else
+        {
+            if (Session["role"].ToString() != "Admin")
+            {
+                Response.Redirect("~/Acces.aspx");
+            }
+        }
+
         if (Page.IsPostBack == false && Request.Params["id"] != null)
         {
             //Mesaj.Text = Request.Params["id"];
