@@ -16,7 +16,10 @@ namespace UnitTestStiri
         string key = "2345";
         int keyAddedArticle = -1; 
 
-      
+        
+ 
+
+
         // This test checks if an artical is inserted correctly in the db. 
         [TestMethod]  
         public void TestAddArticol()
@@ -43,7 +46,15 @@ namespace UnitTestStiri
             Assert.IsTrue(TestContext.Articol.Where(a => a.Categorie.Equals(categorie)).ToList().Count() > 0);  
         }
 
-         
+        [TestMethod]  
+        public void TestDeleteArticol()
+        {
+            // create our Repository
+            Repository repository = new Repository(); 
+            repository.StergereArticol(TestContext, keyAddedArticle); 
+            Assert.IsFalse(TestContext.Articol.Any(a => a.Id == keyAddedArticle));
+
+        }
 
     }
 }
