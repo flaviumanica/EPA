@@ -24,10 +24,14 @@ namespace UnitTestStiri
             TestEditArticol();
             TestDeleteArticol();
         }
- 
+        [TestMethod]
+        public void suiteTestCategorie()
+        {
+            TestInsertCategorie();
+            TestDeleteCategorie();
+        }
 
-        // TDD - We must implement a method named AdaugareCategorie in Repository class that must add a new category in the db.  
-        [TestMethod]          
+        // TDD - We must implement a method named AdaugareCategorie in Repository class that must add a new category in the db.        
        public void TestInsertCategorie()
         {   
             // create our Repository
@@ -41,7 +45,16 @@ namespace UnitTestStiri
             Assert.IsTrue(keyAddedCategory >= 0);
             
         }
- 
+
+         
+        public void TestDeleteCategorie()
+        {
+            // create our Repository
+            Repository repository = new Repository();  
+            repository.StergereCategorie(TestContext, keyAddedCategory);
+            Assert.IsFalse(TestContext.Categorii.Any(a => a.Id == keyAddedCategory));
+
+        }
 
 
         // This test checks if an artical is inserted correctly in the db. 
