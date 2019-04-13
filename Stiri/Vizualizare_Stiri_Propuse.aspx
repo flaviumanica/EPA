@@ -6,7 +6,13 @@
     <link rel="Stylesheet" href="/Viz_Stire.css" type="text/css" />
     <asp:Panel>
         <asp:Literal ID="Mesaj" runat="server"></asp:Literal>
-        
+        <%if (Session["user"] != null && Session["id"] != null && Session["role"].ToString() == "Admin") { %>
+        <div class="filtru">
+        <asp:Label class="Label" ID="Label_Stiri_Dupa_User" runat="server" Text="CAUTA STIRI DUPA UTILIZATOR "></asp:Label>
+        <asp:TextBox class="Text" ID="Text_Stiri_Dupa_User" runat="server"></asp:TextBox>   
+        <asp:Button class="but" ID="Buton_Stiri_Dupa_User" runat="server" Text="Cauta" OnClick ="Cauta_Dupa_User"/>
+        </div>
+        <% } %>
         
     <asp:SqlDataSource ID="Articole" 
             runat="server"
@@ -29,7 +35,15 @@
                    <p>Adaugat de: <%# DataBinder.Eval(Container.DataItem, "Username").ToString()%></p>
                    <p>Categoria: <%# DataBinder.Eval(Container.DataItem, "Nume").ToString()%></p>
                    <p>Data publicarii: <%# DataBinder.Eval(Container.DataItem, "Data_propunere").ToString().Substring(0,10)%></p>
-
+                   <div align="center">
+                    <%if (Session["user"] != null && Session["id"] != null && Session["role"].ToString() == "Editor") { %>
+                    <asp:HyperLink runat="server" NavigateUrl='<%# "~/Publica_Stire_Propusa.aspx?id=" + DataBinder.Eval(Container.DataItem, "Id")%>'>
+                        <input class="but" type="button" value="PUBLICA" style="margin-right: 15%; padding:7px;">
+                    </asp:HyperLink>
+                    <asp:Button class="but" ID="Button3" runat="server" style="padding:7px; margin-right: 15%;" CommandArgument= '<%# Eval("Id") %>' Text="STERGE" OnClick="Sterge_Stire_Propusa" /> 
+                   <% } %>
+                       <asp:Button class="but" ID="Button1" runat="server" style="padding:7px; margin-bottom: 10px;"  Text="REZUMAT" OnClick="Rezumat" CommandArgument='<%# Eval("Continut_propunere") %>'/> 
+                  </div>
                    
                         <%--<asp:Panel Visible="false" runat="server">
                        <asp:Label id="inp" type="text" runat="server"></asp:Label>
