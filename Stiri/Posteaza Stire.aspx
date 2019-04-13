@@ -40,8 +40,7 @@
                     ErrorMessage="Scurta descriere obligatorie"
                     ForeColor="Red">*</asp:RequiredFieldValidator>
         <br />
-        <asp:Button class="but" style="width:auto;" ID="Button2" runat="server" Text="Genereaza descriere" OnClick="Genereaza_Descriere" CausesValidation="false"/>
-        <br />
+<br />
         <asp:Label class="txt" ID="Label5" runat="server" Text="Categorie"></asp:Label>
         <br /><br />
         <asp:DropDownList ID="DDL" class="ddl"

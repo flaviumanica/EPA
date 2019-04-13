@@ -31,7 +31,8 @@ public partial class Posteaza_Stire : System.Web.UI.Page
         else
             e.IsValid = false;
     }
-    protected void Posteaza(object sender, EventArgs e)
+    
+        protected void Posteaza(object sender, EventArgs e)
         {
             //Mesaj.Text = DropDownList1.SelectedValue;
             SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename='D:\Master\Sem. 2\ElemProgrAvansata\Proiect\Prezentare\Stiri\App_Data\Database.mdf';Integrated Security=True");
