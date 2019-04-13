@@ -29,7 +29,7 @@
             
     <br />
     <br /><br /><br /><br />
-   
+    <asp:Label  class="com" ID="Label1"  runat="server" Text="Adauga un comentariu!" Visible="false" AssociatedControlID="Comm"> </asp:Label>
     <br /> <br />
     <asp:TextBox style="margin-left:33%;margin-right:40%; width:400px;" ID="Comm"  runat="server" Visible="false" TextMode="multiline" Columns="40" Rows="4"></asp:TextBox>
     <asp:RegularExpressionValidator Display = "Dynamic" ControlToValidate = "Comm" ID="RegularExpressionValidator1" ValidationExpression = "^[\s\S]{0,100}$" runat="server" ErrorMessage="Poti adauga maxim 100 de caractere"></asp:RegularExpressionValidator>
