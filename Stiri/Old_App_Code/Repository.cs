@@ -15,6 +15,13 @@ namespace Stiri.Old_App_Code
         public void StergereArticol(IFake context, int articolID)
         {
              
-        } 
+        }
+
+        public void EditareArticol(IFake context, string titluOld, Articol updatedArticol)
+        {
+ 
+
+        }
+ 
     }
 }

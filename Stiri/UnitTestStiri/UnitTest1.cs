@@ -16,12 +16,16 @@ namespace UnitTestStiri
         string key = "2345";
         int keyAddedArticle = -1; 
 
-        
- 
-
+        [TestMethod]  
+        public void suiteTestArticle()
+        {
+            TestAddArticol();
+            TestEditArticol();
+            TestDeleteArticol();
+        }
+    
 
         // This test checks if an artical is inserted correctly in the db. 
-        [TestMethod]  
         public void TestAddArticol()
         { 
             // create our Repository
@@ -46,7 +50,32 @@ namespace UnitTestStiri
             Assert.IsTrue(TestContext.Articol.Where(a => a.Categorie.Equals(categorie)).ToList().Count() > 0);  
         }
 
-        [TestMethod]  
+        // we want to check if the article added earlier can be retrieved and updated.
+        
+        public void TestEditArticol()
+        {
+            // create our Repository
+            Repository repository = new Repository();
+            // We retrieve the article added earlier.
+            Articol articol = TestContext.Articol.FirstOrDefault(a => a.Titlu.Contains("Titlul articolului" + key));
+            string newKey = "000";
+            string oldTitle = articol.Titlu;
+            articol.Titlu = articol.Titlu + newKey;
+            articol.Continut = articol.Continut + newKey;
+            articol.Descriere = articol.Descriere + newKey;
+            articol.Categorie = 2;
+            articol.Link = articol.Link + newKey;
+            repository.EditareArticol(TestContext, oldTitle, articol);
+            // we check every single field we've just updated
+            Assert.IsTrue(TestContext.Articol.Where(a => a.Titlu.Equals(articol.Titlu)).ToList().Count() > 0);
+            Assert.IsTrue(TestContext.Articol.Where(a => a.Continut.Equals(articol.Continut)).ToList().Count() > 0);
+            Assert.IsTrue(TestContext.Articol.Where(a => a.Descriere.Equals(articol.Descriere)).ToList().Count() > 0);
+            Assert.IsTrue(TestContext.Articol.Where(a => a.Categorie.Equals(articol.Categorie)).ToList().Count() > 0); 
+
+        }
+
+        // we've just added an article, but we must delete it, in order to check the correctness of the delete feature, and also to clean the db.
+         
         public void TestDeleteArticol()
         {
             // create our Repository
