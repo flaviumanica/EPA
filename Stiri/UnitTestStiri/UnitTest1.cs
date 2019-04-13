@@ -14,7 +14,8 @@ namespace UnitTestStiri
     {
         IFake TestContext = new Stiri.StiriFakeDb();
         string key = "2345";
-        int keyAddedArticle = -1; 
+        int keyAddedArticle = -1;
+        int keyAddedCategory = -1;
 
         [TestMethod]  
         public void suiteTestArticle()
@@ -23,7 +24,25 @@ namespace UnitTestStiri
             TestEditArticol();
             TestDeleteArticol();
         }
-    
+ 
+
+        // TDD - We must implement a method named AdaugareCategorie in Repository class that must add a new category in the db.  
+        [TestMethod]          
+       public void TestInsertCategorie()
+        {   
+            // create our Repository
+            Repository repository = new Repository();
+            string categoryName = "FirstCategory";
+            keyAddedCategory = repository.AdaugareCategorie(TestContext, categoryName);
+            // After we added a category, we must check if the category is in the db.
+            // We search for the category name and we expect to have a category having that name.
+            Assert.IsTrue(TestContext.Categorii.Where(a => a.Nume.Equals(categoryName)).ToList().Count() == 1);
+            Console.WriteLine(keyAddedCategory);
+            Assert.IsTrue(keyAddedCategory >= 0);
+            
+        }
+ 
+
 
         // This test checks if an artical is inserted correctly in the db. 
         public void TestAddArticol()

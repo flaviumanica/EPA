@@ -22,6 +22,10 @@ namespace Stiri.Old_App_Code
  
 
         }
- 
+
+        public int AdaugareCategorie(IFake context, string categorie)
+        {
+			return -1;
+        }  
     }
 }
